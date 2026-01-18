@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
-import styled from 'styled-components'
 import { useWheelRotation } from '../../hooks/useWheelRotation'
-import { iPodTheme, ShellVariant } from '../../styles/theme'
+import { ShellVariant } from '../../styles/theme'
+import './ClickWheel.css'
 
 interface ClickWheelProps {
   variant: ShellVariant
@@ -15,8 +15,8 @@ interface ClickWheelProps {
   disabled?: boolean
 }
 
-const WHEEL_SIZE = iPodTheme.dimensions.wheelSize
-const CENTER_SIZE = iPodTheme.dimensions.wheelCenterSize
+const WHEEL_SIZE = 168
+const CENTER_SIZE = 56
 const INNER_RADIUS = CENTER_SIZE / 2
 const OUTER_RADIUS = WHEEL_SIZE / 2
 const ROTATION_SENSITIVITY = 15
@@ -77,154 +77,56 @@ export function ClickWheel({
   }
 
   return (
-    <WheelContainer
+    <div
       ref={wheelRef}
       {...handlers}
-      $variant={variant}
-      $disabled={disabled}
+      className={`click-wheel ${variant} ${disabled ? 'disabled' : ''}`}
     >
       {/* MENU text at top */}
-      <MenuButton
-        $variant={variant}
-        $active={activeButton === 'menu'}
+      <button
+        className={`wheel-button wheel-button-menu ${variant} ${activeButton === 'menu' ? 'active' : ''}`}
         {...handleButtonPress('menu', onMenu)}
       >
         MENU
-      </MenuButton>
+      </button>
 
       {/* Previous (rewind) at left ◀◀ */}
-      <PrevButton
-        $variant={variant}
-        $active={activeButton === 'prev'}
+      <button
+        className={`wheel-button wheel-button-prev ${variant} ${activeButton === 'prev' ? 'active' : ''}`}
         {...handleButtonPress('prev', onPrev)}
       >
         <svg viewBox="0 0 24 16" width="20" height="14">
           <polygon fill="currentColor" points="12,0 12,16 2,8"/>
           <polygon fill="currentColor" points="22,0 22,16 12,8"/>
         </svg>
-      </PrevButton>
+      </button>
 
       {/* Next (forward) at right ▶▶ */}
-      <NextButton
-        $variant={variant}
-        $active={activeButton === 'next'}
+      <button
+        className={`wheel-button wheel-button-next ${variant} ${activeButton === 'next' ? 'active' : ''}`}
         {...handleButtonPress('next', onNext)}
       >
         <svg viewBox="0 0 24 16" width="20" height="14">
           <polygon fill="currentColor" points="2,0 12,8 2,16"/>
           <polygon fill="currentColor" points="12,0 22,8 12,16"/>
         </svg>
-      </NextButton>
+      </button>
 
       {/* Play/Pause at bottom */}
-      <PlayPauseButton
-        $variant={variant}
-        $active={activeButton === 'playpause'}
+      <button
+        className={`wheel-button wheel-button-playpause ${variant} ${activeButton === 'playpause' ? 'active' : ''}`}
         {...handleButtonPress('playpause', onPlayPause)}
       >
         <svg viewBox="0 0 24 16" width="22" height="15">
           <path fill="currentColor" d="M0 0v16l10-8L0 0zm12 3h3v10h-3zm6 0h3v10h-3z"/>
         </svg>
-      </PlayPauseButton>
+      </button>
 
       {/* Center select button */}
-      <CenterButton
-        $variant={variant}
-        $active={activeButton === 'select'}
+      <button
+        className={`click-wheel-center ${variant} ${activeButton === 'select' ? 'active' : ''}`}
         {...handleButtonPress('select', onSelect)}
       />
-    </WheelContainer>
+    </div>
   )
 }
-
-const WheelContainer = styled.div<{ $variant: ShellVariant; $disabled: boolean }>`
-  width: ${WHEEL_SIZE}px;
-  height: ${WHEEL_SIZE}px;
-  border-radius: 50%;
-  background: ${props => iPodTheme.wheel[props.$variant].background};
-  position: relative;
-  cursor: ${props => (props.$disabled ? 'not-allowed' : 'grab')};
-  user-select: none;
-  touch-action: none;
-
-  &:active {
-    cursor: ${props => (props.$disabled ? 'not-allowed' : 'grabbing')};
-  }
-`
-
-const CenterButton = styled.button<{ $variant: ShellVariant; $active: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: ${CENTER_SIZE}px;
-  height: ${CENTER_SIZE}px;
-  border-radius: 50%;
-  border: 1px solid ${props => iPodTheme.wheel[props.$variant].centerBorder};
-  background: ${props => iPodTheme.wheel[props.$variant].center};
-  cursor: pointer;
-  transition: transform ${iPodTheme.animation.buttonPress}s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-
-  ${props => props.$active && `
-    transform: translate(-50%, -50%) scale(0.96);
-  `}
-
-  &:focus {
-    outline: none;
-  }
-`
-
-const WheelButton = styled.button<{ $variant: ShellVariant; $active: boolean }>`
-  position: absolute;
-  background: transparent;
-  border: none;
-  color: ${props => iPodTheme.wheel[props.$variant].text};
-  cursor: pointer;
-  transition: all ${iPodTheme.animation.buttonPress}s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-
-  ${props => props.$active && `
-    color: ${iPodTheme.wheel[props.$variant].activeText};
-  `}
-
-  &:focus {
-    outline: none;
-  }
-
-  svg {
-    display: block;
-  }
-`
-
-const MenuButton = styled(WheelButton)`
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  padding: 6px 12px;
-`
-
-const PrevButton = styled(WheelButton)`
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-`
-
-const NextButton = styled(WheelButton)`
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-`
-
-const PlayPauseButton = styled(WheelButton)`
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-`

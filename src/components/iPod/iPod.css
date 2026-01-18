@@ -1,0 +1,147 @@
+/* ============================================
+   iPOD SHELL STYLES
+   ============================================ */
+
+.ipod-shell-wrapper {
+  position: relative;
+}
+
+/* Silver variant */
+.ipod-edge-frame {
+  padding: 3px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25),
+              0 10px 20px rgba(0,0,0,0.15),
+              0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.ipod-edge-frame.silver {
+  background: linear-gradient(90deg,
+    #c0c0c0 0%,
+    #e8e8e8 15%,
+    #f5f5f5 50%,
+    #e8e8e8 85%,
+    #c0c0c0 100%
+  );
+}
+
+.ipod-edge-frame.black {
+  background: linear-gradient(90deg,
+    #1a1a1a 0%,
+    #2a2a2a 15%,
+    #333333 50%,
+    #2a2a2a 85%,
+    #1a1a1a 100%
+  );
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4),
+              0 10px 20px rgba(0,0,0,0.3),
+              0 0 0 1px rgba(0,0,0,0.5);
+}
+
+.ipod-front-panel {
+  width: 250px;
+  height: 418px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ipod-front-panel.silver {
+  background: linear-gradient(180deg,
+    #f0f0f0 0%,
+    #e8e8e8 20%,
+    #e4e4e4 50%,
+    #e0e0e0 80%,
+    #d8d8d8 100%
+  );
+}
+
+.ipod-front-panel.black {
+  background: linear-gradient(180deg,
+    #2a2a2a 0%,
+    #222222 20%,
+    #1e1e1e 50%,
+    #1a1a1a 80%,
+    #151515 100%
+  );
+}
+
+.ipod-content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ipod-top-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  pointer-events: none;
+  border-radius: 18px 18px 0 0;
+}
+
+.ipod-top-highlight.silver {
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.1) 40%,
+    transparent 100%
+  );
+}
+
+.ipod-top-highlight.black {
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.08) 0%,
+    rgba(255,255,255,0.02) 40%,
+    transparent 100%
+  );
+}
+
+/* ============================================
+   iPOD SCREEN STYLES
+   ============================================ */
+
+.ipod-screen-container {
+  margin-bottom: 28px;
+}
+
+.ipod-screen-bezel {
+  background: #000000;
+  border-radius: 6px;
+  padding: 6px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5),
+              0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ipod-lcd-screen {
+  width: 200px;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ipod-lcd-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
+  pointer-events: none;
+}

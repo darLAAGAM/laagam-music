@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react'
-import styled from 'styled-components'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useNavigation } from '../../context/NavigationContext'
 import { useYouTubePlayer } from '../../context/YouTubePlayerContext'
 import { MenuScreen } from './MenuScreen'
 import { NowPlayingScreen } from './NowPlayingScreen'
 import { AddPlaylistScreen } from './AddPlaylistScreen'
+import './Screen.css'
 
 const screenVariants = {
   enter: (direction: 'forward' | 'back') => ({
@@ -62,10 +62,10 @@ export function ScreenContainer() {
   }
 
   return (
-    <Container>
+    <div className="screen-container">
       <AnimatePresence mode="wait" custom={state.direction}>
         {state.screenType === 'menu' && currentMenu && (
-          <MotionScreen
+          <motion.div
             key={`menu-${state.currentMenuId}`}
             custom={state.direction}
             variants={screenVariants}
@@ -73,17 +73,18 @@ export function ScreenContainer() {
             animate="center"
             exit="exit"
             transition={screenTransition}
+            className="screen-motion"
           >
             <MenuScreen
               title={currentMenu.title}
               items={currentMenu.items}
               selectedIndex={state.selectedIndex}
             />
-          </MotionScreen>
+          </motion.div>
         )}
 
         {state.screenType === 'nowPlaying' && (
-          <MotionScreen
+          <motion.div
             key="now-playing"
             custom={state.direction}
             variants={screenVariants}
@@ -91,13 +92,14 @@ export function ScreenContainer() {
             animate="center"
             exit="exit"
             transition={screenTransition}
+            className="screen-motion"
           >
             <NowPlayingScreen />
-          </MotionScreen>
+          </motion.div>
         )}
 
         {state.screenType === 'addPlaylist' && (
-          <MotionScreen
+          <motion.div
             key="add-playlist"
             custom={state.direction}
             variants={screenVariants}
@@ -105,30 +107,16 @@ export function ScreenContainer() {
             animate="center"
             exit="exit"
             transition={screenTransition}
+            className="screen-motion"
           >
             <AddPlaylistScreen
               onAdd={handleAddVideo}
               onCancel={goBack}
               error={state.addPlaylistError}
             />
-          </MotionScreen>
+          </motion.div>
         )}
       </AnimatePresence>
-    </Container>
+    </div>
   )
 }
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-`
-
-const MotionScreen = styled(motion.div)`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-`

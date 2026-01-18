@@ -1,0 +1,471 @@
+/* ============================================
+   SCREEN CONTAINER STYLES
+   ============================================ */
+
+.screen-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.screen-motion {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ============================================
+   SHARED TITLE BAR STYLES
+   ============================================ */
+
+.ipod-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 8px;
+  background: linear-gradient(180deg, #b8b8b8 0%, #9a9a9a 50%, #8a8a8a 100%);
+  min-height: 18px;
+  border-bottom: 1px solid #6a6a6a;
+}
+
+.ipod-title-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #000;
+}
+
+.ipod-title-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ipod-title-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ipod-time-text {
+  font-size: 9px;
+  font-weight: 500;
+  color: #000;
+}
+
+/* Battery icon */
+.ipod-battery-icon {
+  display: flex;
+  align-items: center;
+}
+
+.ipod-battery-body {
+  width: 16px;
+  height: 8px;
+  border: 1px solid #000;
+  border-radius: 1px;
+  padding: 1px;
+  background: #fff;
+}
+
+.ipod-battery-fill {
+  width: 100%;
+  height: 100%;
+  background: #4cd964;
+  border-radius: 0.5px;
+}
+
+.ipod-battery-tip {
+  width: 2px;
+  height: 4px;
+  background: #000;
+  border-radius: 0 1px 1px 0;
+}
+
+/* ============================================
+   MENU SCREEN STYLES
+   ============================================ */
+
+.menu-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.menu-area {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-scroll-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  height: 22px;
+}
+
+.menu-item.selected {
+  background: linear-gradient(180deg,
+    #5c9cff 0%,
+    #3a7bd5 30%,
+    #2968c8 70%,
+    #1e58b8 100%
+  );
+}
+
+.menu-item-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-item.selected .menu-item-label {
+  color: #fff;
+}
+
+.menu-item-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.menu-item-subtitle {
+  font-size: 10px;
+  color: #666;
+}
+
+.menu-item.selected .menu-item-subtitle {
+  color: rgba(255,255,255,0.8);
+}
+
+.menu-item-arrow {
+  font-size: 14px;
+  font-weight: 300;
+  color: #666;
+  line-height: 1;
+}
+
+.menu-item.selected .menu-item-arrow {
+  color: #fff;
+}
+
+/* Scrollbar */
+.menu-scrollbar-track {
+  position: absolute;
+  right: 1px;
+  top: 20px;
+  bottom: 1px;
+  width: 6px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.menu-scrollbar-thumb {
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  min-height: 20px;
+}
+
+.menu-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 12px;
+  color: #666;
+}
+
+/* ============================================
+   NOW PLAYING SCREEN STYLES
+   ============================================ */
+
+.now-playing-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.now-playing-indicator {
+  font-size: 9px;
+  color: #000;
+}
+
+.now-playing-track-number {
+  font-size: 10px;
+  color: #000;
+}
+
+.now-playing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 12px 8px;
+}
+
+.now-playing-artwork-container {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 6px;
+}
+
+.now-playing-artwork {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.now-playing-artwork-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.now-playing-placeholder-icon {
+  font-size: 32px;
+  color: #888;
+}
+
+.now-playing-track-info {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.now-playing-song-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.now-playing-artist {
+  font-size: 10px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.now-playing-progress-section {
+  width: 100%;
+}
+
+.now-playing-progress-bar {
+  width: 100%;
+  height: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.now-playing-progress-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #d0d0d0;
+  border-radius: 1.5px;
+}
+
+.now-playing-progress-fill {
+  position: absolute;
+  left: 0;
+  height: 3px;
+  background: #808080;
+  border-radius: 1.5px;
+  transition: width 0.1s linear;
+}
+
+.now-playing-progress-diamond {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #4a4a4a;
+  transform: translateX(-50%) rotate(45deg);
+  transition: left 0.1s linear;
+}
+
+.now-playing-time-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.now-playing-time {
+  font-size: 9px;
+  color: #000;
+}
+
+.now-playing-no-track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.now-playing-no-track-text {
+  font-size: 12px;
+  color: #666;
+}
+
+/* ============================================
+   ADD PLAYLIST SCREEN STYLES
+   ============================================ */
+
+.add-playlist-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.add-playlist-url-section {
+  padding: 10px;
+  margin: 6px 8px;
+  background: #f5f5f5;
+  border: 2px solid #999;
+  border-radius: 4px;
+  cursor: text;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.add-playlist-url-section:active {
+  border-color: #3a7bd5;
+  background: #fff;
+}
+
+.add-playlist-url-text {
+  font-size: 10px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.add-playlist-url-text.has-url {
+  color: #000;
+}
+
+.add-playlist-url-text.no-url {
+  color: #888;
+}
+
+.add-playlist-url-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #000;
+  outline: none;
+  width: 100%;
+  min-height: 20px;
+}
+
+.add-playlist-url-input::placeholder {
+  color: #666;
+}
+
+.add-playlist-menu-list {
+  flex: 1;
+}
+
+.add-playlist-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  height: 26px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.add-playlist-menu-item.selected {
+  background: linear-gradient(180deg,
+    #5c9cff 0%,
+    #3a7bd5 30%,
+    #2968c8 70%,
+    #1e58b8 100%
+  );
+}
+
+.add-playlist-menu-item.disabled {
+  opacity: 0.4;
+}
+
+.add-playlist-menu-item:active {
+  background: linear-gradient(180deg,
+    #5c9cff 0%,
+    #3a7bd5 30%,
+    #2968c8 70%,
+    #1e58b8 100%
+  );
+}
+
+.add-playlist-item-label {
+  font-size: 12px;
+  color: #000;
+}
+
+.add-playlist-menu-item.selected .add-playlist-item-label {
+  color: #fff;
+}
+
+.add-playlist-item-arrow {
+  font-size: 14px;
+  font-weight: 300;
+  color: #666;
+}
+
+.add-playlist-menu-item.selected .add-playlist-item-arrow {
+  color: #fff;
+}
+
+.add-playlist-error-bar {
+  padding: 4px 8px;
+  background: #fee;
+  border-top: 1px solid #fcc;
+}
+
+.add-playlist-error-text {
+  font-size: 10px;
+  color: #c00;
+  text-align: center;
+}
