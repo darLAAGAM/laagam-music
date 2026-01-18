@@ -102,13 +102,31 @@ export async function fetchYouTubeOEmbed(url: string): Promise<{
 
 const STORAGE_KEY = 'ipod_youtube_items'
 
+// Default playlist to show when no items are saved
+const DEFAULT_PLAYLIST: SavedYouTubeItem = {
+  id: 'default-laagam-playlist',
+  youtubeId: 'PLW_95a4He-o_Y-1S1UclpM-rxTnZ3maLF',
+  type: 'playlist',
+  title: 'LAAGAM Music',
+  thumbnailUrl: undefined,
+  addedAt: 0,
+}
+
 export function getSavedItems(): SavedYouTubeItem[] {
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
-    if (!stored) return []
-    return JSON.parse(stored)
+    if (!stored) {
+      // Return default playlist on first visit
+      return [DEFAULT_PLAYLIST]
+    }
+    const items = JSON.parse(stored)
+    // If items is empty array, also return default
+    if (items.length === 0) {
+      return [DEFAULT_PLAYLIST]
+    }
+    return items
   } catch {
-    return []
+    return [DEFAULT_PLAYLIST]
   }
 }
 
