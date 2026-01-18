@@ -6,10 +6,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run dev      # Start development server (Vite) at http://127.0.0.1:5173
+npm run dev -- --host  # Start with network access (for mobile testing)
 npm run build    # Type-check with tsc and build for production
 npm run lint     # Run ESLint
 npm run preview  # Preview production build
 ```
+
+## Deployment
+
+**Production URLs:**
+- Vercel: https://ipod-spotify-player.vercel.app/
+- Custom domain: https://music.laagam.com (pending DNS)
+- GitHub: https://github.com/darLAAGAM/laagam-music
+
+**Deploy to Vercel:**
+```bash
+vercel build --prod && vercel deploy --prebuilt --prod
+```
+
+Important: Always use `--prebuilt` to deploy the exact local build. This prevents discrepancies between local and production.
 
 ## Architecture Overview
 
@@ -66,3 +81,14 @@ No API keys needed. Uses YouTube's public systems (`services/youtube/youtube.ts`
 - **styled-components** for all CSS
 - Theme values in `styles/theme.ts` (iPod dimensions, colors for 'silver'/'black' variants)
 - LCD screen effect via CSS linear-gradient overlays
+
+### Landing Page
+
+`components/Landing/LaagamLanding.tsx` wraps the iPod player with a LAAGAM-branded landing page:
+- Hero section with video and "The Sound of Style" headline
+- Smooth scroll to iPod player section
+- "How It Works" steps
+- Brand statement and press quotes
+- Footer with navigation links
+
+The landing uses the LAAGAM video from `Video/` folder and logos from `assets/`.
