@@ -45,6 +45,7 @@ export function LaagamLanding({ children }: LaagamLandingProps) {
               muted
               playsInline
               className="hero-video"
+              aria-label="LAAGAM fashion showcase video"
             />
           </div>
 
@@ -67,10 +68,10 @@ export function LaagamLanding({ children }: LaagamLandingProps) {
       </section>
 
       {/* iPod Player */}
-      <section id="player" className="player-section">
+      <section id="player" className="player-section" aria-label="iPod Music Player">
         <div className="player-wrapper">
           {children}
-          <span className="player-hint">Spin the wheel to navigate</span>
+          <span className="player-hint" role="status">Spin the wheel to navigate</span>
         </div>
       </section>
 
@@ -145,25 +146,25 @@ export function LaagamLanding({ children }: LaagamLandingProps) {
           </div>
           <div className="footer-nav">
             <div className="footer-col">
-              <span className="footer-col-title">Shop</span>
+              <h4 className="footer-col-title">Shop</h4>
               <a href="https://laagam.com/collections/new-in" className="footer-link">New In</a>
               <a href="https://laagam.com/collections/all" className="footer-link">All</a>
               <a href="https://laagam.com/collections/bestsellers" className="footer-link">Bestsellers</a>
             </div>
             <div className="footer-col">
-              <span className="footer-col-title">Info</span>
+              <h4 className="footer-col-title">Info</h4>
               <a href="https://laagam.com/pages/about" className="footer-link">About</a>
               <a href="https://laagam.com/pages/contact" className="footer-link">Contact</a>
             </div>
             <div className="footer-col">
-              <span className="footer-col-title">Social</span>
+              <h4 className="footer-col-title">Social</h4>
               <a href="https://www.instagram.com/laagam/" className="footer-link">Instagram</a>
               <a href="https://www.tiktok.com/@laagam" className="footer-link">TikTok</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 LAAGAM</span>
+          <span>© {new Date().getFullYear()} LAAGAM</span>
           <span>LAAGAM.COM</span>
         </div>
       </footer>
