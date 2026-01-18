@@ -216,12 +216,12 @@ const LogoLink = styled.a`
 `
 
 const Logo = styled.img`
-  height: 24px;
+  height: 20px;
   width: auto;
   display: block;
 
   @media (min-width: 768px) {
-    height: 32px;
+    height: 24px;
   }
 `
 
